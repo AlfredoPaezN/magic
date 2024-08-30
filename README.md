@@ -18,9 +18,9 @@ _\*Magic Cards works on iOS, Android, Web, and Windows._
 
 # How to run
 
-1- flutter pub get
-2- flutter packages pub run build_runner build 
-3 - Enjoy!
+* ```flutter pub get ```
+* ```flutter packages pub run build_runner build ```
+* ```Enjoy!```
 
 
 </p>
