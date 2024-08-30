@@ -7,13 +7,20 @@ Magic Cards is a delightful project dedicated to showcasing a curated collection
 
 ## Getting Started 🚀
 
-This project contains 3 flavors:
-
-- development
-- staging
-- production
 
 _\*Magic Cards works on iOS, Android, Web, and Windows._
+
+* Clean Architecture
+* Dependency Injection
+* Bloc Pattern
+* MVVM Architecture
+* Go Router
+
+# How to run
+
+1- flutter pub get
+2- flutter packages pub run build_runner build 
+3 - Enjoy!
 
 
 </p>
