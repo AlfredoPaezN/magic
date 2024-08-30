@@ -7,16 +7,18 @@ class StaggeredDualView extends StatelessWidget {
     super.key,
     this.spacing = 0.0,
     this.aspectRatio = 0.5,
+    this.scrollController,
   });
 
   final IndexedWidgetBuilder itemBuilder;
   final int itemCount;
   final double spacing;
   final double aspectRatio;
-
+  final ScrollController? scrollController;
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      controller: scrollController,
       itemCount: itemCount,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,

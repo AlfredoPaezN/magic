@@ -8,7 +8,7 @@ class MagicRepositoryImpl implements MagicRepository {
   MagicRepositoryImpl(this.magicService);
 
   @override
-  Future<Resource<List<MagicCard>>> getCards() {
-    return magicService.getCards();
+  Future<Resource<List<MagicCard>>> getCards({int page = 1, int pageSize = 8}) {
+    return magicService.getCards(page: page, pageSize: pageSize);
   }
 }

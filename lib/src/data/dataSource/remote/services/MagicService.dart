@@ -9,17 +9,23 @@ import 'package:magic/src/domain/utils/cache_manager.dart';
 
 class MagicService {
   final CacheManager _cacheManager = CacheManager();
-  Future<Resource<List<MagicCard>>> getCards() async {
+  Future<Resource<List<MagicCard>>> getCards(
+      {int page = 1, int pageSize = 8}) async {
     try {
-      final cachedCards = await _cacheManager.getCachedCards();
-      if (cachedCards != null) {
-        return Success(cachedCards);
+      bool isCached = await _cacheManager.checkPages(page);
+      if (isCached) {
+        final cachedCards = await _cacheManager.getCachedCards();
+        if (cachedCards != null) {
+          return Success(cachedCards);
+        }
       }
 
       Uri url = Uri.parse(
-          "${ApiConfig.BASE_URL}${ApiConfig.CARDS}?page=1&pageSize=10");
+          "${ApiConfig.BASE_URL}${ApiConfig.CARDS}?page=$page&pageSize=$pageSize");
       Map<String, String> headers = {
         'Content-Type': 'application/json',
+        'Connection': 'keep-alive',
+        'Accept': '*/*',
       };
       final response = await http.get(url, headers: headers);
 
@@ -27,6 +33,8 @@ class MagicService {
         List<dynamic> data = jsonDecode(response.body)['cards'];
         List<MagicCard> cards =
             data.map((card) => MagicCard.fromJson(card)).toList();
+
+        await _cacheManager.cachePages(page);
 
         await _cacheManager.cacheCards(cards);
 

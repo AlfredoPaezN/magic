@@ -81,11 +81,15 @@ class MeContent extends StatelessWidget {
                   );
                 }
               },
-              child: CustomButton(
-                text: 'Let\'s Start!',
-                onPressed: () {
-                  context.read<MagicBloc>().add(FormSubmit());
-                },
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: CustomButton(
+                  text: 'Let\'s Start!',
+                  textColor: Colors.white,
+                  onPressed: () {
+                    context.read<MagicBloc>().add(FormSubmit());
+                  },
+                ),
               ),
             ),
             SizedBox(

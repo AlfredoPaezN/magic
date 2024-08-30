@@ -17,15 +17,69 @@ class CardList extends StatefulWidget {
 }
 
 class _CardListState extends State<CardList> {
+  ScrollController scrollController = ScrollController();
+  bool jumpToTop = false;
+  int page = 1;
+
+  @override
+  void initState() {
+    scrollController.addListener(scrollListener);
+
+    super.initState();
+  }
+
+  void scrollListener() {
+    if (scrollController.offset <= 300) {
+      jumpToTop = false;
+      setState(() {});
+    }
+
+    if (scrollController.offset >= 400 &&
+        !scrollController.position.outOfRange) {
+      jumpToTop = true;
+      setState(() {});
+    }
+    if (scrollController.offset >=
+            (scrollController.position.maxScrollExtent) &&
+        !scrollController.position.outOfRange) {
+      setState(() {});
+
+      page++;
+      context.read<MagicBloc>().loadMoreCards(page);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Loading more cards')));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            context.goNamed(Routes.me);
-          },
-          backgroundColor: const Color(MagicColors.primary),
-          child: const Icon(Icons.person),
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            if (jumpToTop)
+              FloatingActionButton(
+                onPressed: () {
+                  if (jumpToTop) {
+                    scrollController.animateTo(0,
+                        duration: const Duration(seconds: 1),
+                        curve: Curves.easeIn);
+                  }
+                },
+                backgroundColor: const Color(MagicColors.primary),
+                child: const Icon(Icons.arrow_upward_outlined),
+              ),
+            const SizedBox(
+              height: 10,
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                context.goNamed(Routes.me);
+              },
+              backgroundColor: const Color(MagicColors.primary),
+              child: const Icon(Icons.person),
+            ),
+          ],
         ),
         backgroundColor: const Color(MagicColors.backgroundColor),
         appBar: AppBar(
@@ -50,6 +104,7 @@ class _CardListState extends State<CardList> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20, right: 20),
                     child: StaggeredDualView(
+                      scrollController: scrollController,
                       spacing: 10,
                       aspectRatio: 0.7,
                       itemCount: state.cards!.length,
@@ -63,11 +118,6 @@ class _CardListState extends State<CardList> {
                           listener: (context, state) {
                             if (state.selectedCard != null) {
                               context.goNamed(Routes.detail);
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Error: ${state.cards}')),
-                              );
                             }
                           },
                           child: MagicCardWidget(

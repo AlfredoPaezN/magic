@@ -1,11 +1,10 @@
-import 'package:magic/src/data/repository/MagicRepositoryImpl.dart';
 import 'package:magic/src/domain/repository/MagicRepository.dart';
 
 class GetCardsUseCase {
-  MagicRepository authRepository;
+  MagicRepository magicRepository;
 
-  GetCardsUseCase(this.authRepository);
-  run() {
-    return authRepository.getCards();
+  GetCardsUseCase(this.magicRepository);
+  run({int page = 1, int pageSize = 8}) {
+    return magicRepository.getCards(page: page, pageSize: pageSize);
   }
 }

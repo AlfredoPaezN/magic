@@ -28,7 +28,7 @@ class CustomButton extends StatelessWidget {
             overlayColor:
                 MaterialStatePropertyAll(Color(MagicColors.secondary)),
             backgroundColor:
-                MaterialStatePropertyAll(Color(MagicColors.yellow)),
+                MaterialStatePropertyAll(Color(MagicColors.secondary)),
           ),
           child: Text(
             text,

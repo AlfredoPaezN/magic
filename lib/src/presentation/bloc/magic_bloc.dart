@@ -34,6 +34,20 @@ class MagicBloc extends Bloc<MagicEvent, MagicState> {
         cards: state.cards,
       ));
     });
+
+    on<LoadMoreCards>((event, emit) async {
+      Resource<List<MagicCard>> response = await getCardsUseCases.run(
+          page: event.page, pageSize: event.pageSize);
+      if (response is Success<List<MagicCard>>) {
+        emit(state.copyWith(
+          cards: [...state.cards!, ...response.data],
+        ));
+      } else if (response is Error<List<MagicCard>>) {
+        emit(state.copyWith(
+          cards: state.cards,
+        ));
+      }
+    });
   }
 
   void setSelectedCard(MagicCard card) {
@@ -42,5 +56,9 @@ class MagicBloc extends Bloc<MagicEvent, MagicState> {
 
   void submitForm() {
     add(FormSubmit());
+  }
+
+  loadMoreCards(int page) {
+    add(LoadMoreCards(page, 8));
   }
 }
