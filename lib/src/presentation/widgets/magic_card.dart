@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:magic/src/domain/models/magic_card.dart';
 import 'package:magic/src/presentation/utils/colors.dart';
@@ -29,16 +30,16 @@ class MagicCardWidget extends StatelessWidget {
                         Radius.circular(10),
                       ),
                       child: card.imageUrl != null
-                          ? Image.network(
-                              card.imageUrl!,
-                              errorBuilder: (context, error, stackTrace) {
-                                return Image.asset(
-                                  'assets/images/cat_placeholder.png',
-                                  fit: BoxFit.cover,
-                                  height: 300,
-                                  width: double.infinity,
-                                );
-                              },
+                          ? CachedNetworkImage(
+                              imageUrl: card.imageUrl!,
+                              placeholder: (context, url) => Image.asset(
+                                'assets/images/card_placeholder.png',
+                                fit: BoxFit.cover,
+                                height: 300,
+                                width: double.infinity,
+                              ),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
                               fit: BoxFit.cover,
                             )
                           : Image.asset(

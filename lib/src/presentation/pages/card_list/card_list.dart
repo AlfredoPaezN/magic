@@ -20,6 +20,13 @@ class _CardListState extends State<CardList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            context.goNamed(Routes.me);
+          },
+          backgroundColor: const Color(MagicColors.primary),
+          child: const Icon(Icons.person),
+        ),
         backgroundColor: const Color(MagicColors.backgroundColor),
         appBar: AppBar(
           centerTitle: true,
