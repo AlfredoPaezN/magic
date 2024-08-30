@@ -39,4 +39,8 @@ class MagicBloc extends Bloc<MagicEvent, MagicState> {
   void setSelectedCard(MagicCard card) {
     add(CardSelected(card));
   }
+
+  void submitForm() {
+    add(FormSubmit());
+  }
 }

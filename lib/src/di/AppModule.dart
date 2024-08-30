@@ -7,10 +7,10 @@ import 'package:injectable/injectable.dart';
 @module
 abstract class AppModule {
   @injectable
-  MagicService get exampleService => MagicService();
+  MagicService get magicService => MagicService();
 
   @injectable
-  MagicRepository get magicRepository => MagicRepositoryImpl(exampleService);
+  MagicRepository get magicRepository => MagicRepositoryImpl(magicService);
 
   @injectable
   GetCardsUseCase get authUseCases => GetCardsUseCase(magicRepository);

@@ -1,0 +1,34 @@
+{
+    "name": "Ancestor's Chosen",
+    "types": [
+        "Creature"
+    ],
+    "subtypes": [
+        "Human",
+        "Cleric"
+    ],
+    "setName": "Tenth Edition",
+    "text": "First strike (This creature deals combat damage before creatures without first strike.)\nWhen Ancestor's Chosen enters the battlefield, you gain 1 life for each card in your graveyard.",
+    "power": "4",
+    "toughness": "4",
+    "imageUrl": "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=130550&type=card",
+    "foreignNames": [
+        {
+            "name": "Ausgewählter der Ahnfrau",
+            "text": "Erstschlag (Diese Kreatur fügt Kampfschaden vor Kreaturen ohne Erstschlag zu.)\nWenn der Ausgewählte der Ahnfrau ins Spiel kommt, erhältst du 1 Lebenspunkt für jede Karte in deinem Friedhof dazu.",
+            "type": "Kreatur — Mensch, Kleriker",
+            "imageUrl": "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=148411&type=card",
+            "language": "German",
+            "multiverseid": 148411
+        },
+        {
+            "name": "Elegido de la Antepasada",
+            "text": "Daña primero. (Esta criatura hace daño de combate antes que las criaturas sin la habilidad de dañar primero.)\nCuando el Elegido de la Antepasada entre en juego, ganas 1 vida por cada carta en tu cementerio.",
+            "type": "Criatura — Clérigo humano",
+            "imageUrl": "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=150317&type=card",
+            "language": "Spanish",
+            "multiverseid": 150317
+        }
+    ],
+    "id": "5f8287b1-5bb6-5f4c-ad17-316a40d5bb0c"
+}

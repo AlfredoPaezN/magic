@@ -28,7 +28,7 @@ extension GetItInjectableX on _i1.GetIt {
       environmentFilter,
     );
     final appModule = _$AppModule();
-    gh.factory<_i3.MagicService>(() => appModule.exampleService);
+    gh.factory<_i3.MagicService>(() => appModule.magicService);
     gh.factory<_i4.MagicRepository>(() => appModule.magicRepository);
     gh.factory<_i5.GetCardsUseCase>(() => appModule.authUseCases);
     return this;
