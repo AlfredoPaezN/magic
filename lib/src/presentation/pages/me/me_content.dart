@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -7,10 +6,8 @@ import 'package:magic/src/domain/utils/Resources.dart';
 import 'package:magic/src/presentation/bloc/magic_bloc.dart';
 import 'package:magic/src/presentation/bloc/magic_event.dart';
 import 'package:magic/src/presentation/bloc/magic_state.dart';
-import 'package:magic/src/presentation/utils/bloc_form_item.dart';
 import 'package:magic/src/presentation/utils/colors.dart';
 import 'package:magic/src/presentation/widgets/custom_button.dart';
-import 'package:magic/src/presentation/widgets/custom_text_field.dart';
 import 'package:magic/src/presentation/widgets/info_card.dart';
 import 'package:magic/src/routes/routes_constants.dart';
 
